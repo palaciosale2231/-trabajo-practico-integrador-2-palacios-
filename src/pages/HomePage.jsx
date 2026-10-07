@@ -3,12 +3,18 @@ import StatusMessage from "../components/StatusMessage.jsx";
 import useFetch from "../hooks/useFetch.js";
 
 function isArticle(value) {
+  const isAuthor =
+    typeof value?.author === "string" ||
+    (value?.author !== null &&
+      typeof value?.author === "object" &&
+      typeof value.author.username === "string");
+
   return (
     value !== null &&
     typeof value === "object" &&
     typeof value.title === "string" &&
-    typeof value.excerpt === "string" &&
-    typeof value.author === "string"
+    (typeof value.excerpt === "string" || value.excerpt === null) &&
+    isAuthor
   );
 }
 

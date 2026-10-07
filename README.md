@@ -7,7 +7,8 @@ N.º I.
 ## Repositorios y servicios
 
 - Repositorio del frontend: https://github.com/palaciosale2231/-trabajo-practico-integrador-2-palacios-
-- URL local de la API: `http://localhost:3000/api`
+- Repositorio del backend (TPI I): https://github.com/palaciosale2231/trabajo-practico-integrador-1
+- URL local de la API: `http://localhost:3001/api`
 - Origen del frontend en desarrollo: `http://localhost:5173`
 
 La URL de la API se puede cambiar en `VITE_API_URL` (ver `.env.example`). El
@@ -16,8 +17,14 @@ backend debe aceptar solicitudes con credenciales desde
 
 - `GET /api/articles`: devuelve artículos con `title`, `excerpt` y `author`.
 - `POST /api/auth/login`: inicia sesión.
-- `POST /api/auth/register`: registra una cuenta.
+- `POST /api/auth/register`: registra una cuenta con `username`, `email`,
+  `password`, `first_name` y `last_name`.
 - `POST /api/auth/logout`: cierra la sesión.
+
+El servidor del TPI I usa el puerto `3001`. Para conectar la aplicación, el
+backend debe montar sus rutas de autenticación y artículos bajo `/api/auth` y
+`/api/articles`, respectivamente, y habilitar CORS con credenciales para
+`http://localhost:5173`.
 
 ## Requisitos
 
