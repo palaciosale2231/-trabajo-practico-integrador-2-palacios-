@@ -10,7 +10,8 @@ export default function RegisterPage() {
     username: "",
     email: "",
     password: "",
-    name: "",
+    first_name: "",
+    last_name: "",
   });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -75,11 +76,18 @@ export default function RegisterPage() {
             value={values.email}
           />
           <FormField
-            autoComplete="name"
-            label="Nombre completo"
-            name="name"
+            autoComplete="given-name"
+            label="Nombre"
+            name="first_name"
             onChange={handleInputChange}
-            value={values.name}
+            value={values.first_name}
+          />
+          <FormField
+            autoComplete="family-name"
+            label="Apellido"
+            name="last_name"
+            onChange={handleInputChange}
+            value={values.last_name}
           />
           <FormField
             autoComplete="new-password"
