@@ -21,7 +21,7 @@ backend debe aceptar solicitudes con credenciales desde
 
 ## Requisitos
 
-- Node.js 18 o superior.
+- Node.js 20 o superior.
 - El backend del TPI I en ejecución.
 
 ## Instalación y ejecución
