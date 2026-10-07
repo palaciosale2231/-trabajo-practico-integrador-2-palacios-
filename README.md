@@ -21,6 +21,11 @@ backend debe aceptar solicitudes con credenciales desde
   `password`, `first_name` y `last_name`.
 - `POST /api/auth/logout`: cierra la sesión.
 
+El servidor del TPI I usa el puerto `3001`. Para conectar la aplicación, el
+backend debe montar sus rutas de autenticación y artículos bajo `/api/auth` y
+`/api/articles`, respectivamente, y habilitar CORS con credenciales para
+`http://localhost:5173`.
+
 ## Requisitos
 
 - Node.js 20 o superior.
