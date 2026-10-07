@@ -29,14 +29,15 @@ export default function Navbar() {
 
     try {
       await apiFetch("auth/logout", { method: "POST" });
-      window.localStorage.removeItem("isLogged");
-      window.localStorage.removeItem("user");
-      window.dispatchEvent(new Event("auth-change"));
-      navigate("/login", { replace: true });
     } catch (error) {
       setLogoutError(
         error instanceof Error ? error.message : "No se pudo cerrar la sesión.",
       );
+    } finally {
+      window.localStorage.removeItem("isLogged");
+      window.localStorage.removeItem("user");
+      window.dispatchEvent(new Event("auth-change"));
+      navigate("/login", { replace: true });
     }
   }
 
@@ -83,7 +84,10 @@ export default function Navbar() {
         </div>
       </nav>
       {logoutError && (
-        <p className="mx-auto max-w-5xl px-4 pb-3 text-sm" role="alert">
+        <p
+          className="mx-auto max-w-5xl px-4 pb-3 text-sm text-red-100"
+          role="alert"
+        >
           {logoutError}
         </p>
       )}

@@ -2,17 +2,27 @@ import ArticleCard from "../components/ArticleCard.jsx";
 import StatusMessage from "../components/StatusMessage.jsx";
 import useFetch from "../hooks/useFetch.js";
 
-function readArticles(payload) {
-  if (Array.isArray(payload)) {
-    return payload;
-  }
+function isArticle(value) {
+  return (
+    value !== null &&
+    typeof value === "object" &&
+    typeof value.title === "string" &&
+    typeof value.excerpt === "string" &&
+    typeof value.author === "string"
+  );
+}
 
-  if (
-    payload &&
-    typeof payload === "object" &&
-    Array.isArray(payload.articles)
-  ) {
-    return payload.articles;
+function readArticles(payload) {
+  const articles = Array.isArray(payload)
+    ? payload
+    : payload &&
+        typeof payload === "object" &&
+        Array.isArray(payload.articles)
+      ? payload.articles
+      : null;
+
+  if (articles && articles.every(isArticle)) {
+    return articles;
   }
 
   return null;
